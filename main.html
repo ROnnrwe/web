@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: black;
+            color: rgb(255, 255, 255);
+            font-family: monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 20px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: cyan;
+        }
+
+        section {
+            padding: 80px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.2s ease-in-out forwards;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        p {
+            font-size: 22px;
+        }
+
+        footer {
+            padding: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* 리스트 스타일 */
+        ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            padding-left: 0;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        ul li {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* 링크 스타일 */
+        a {
+            color: rgb(178, 200, 136);
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 이미지 링크 */
+        .image-link img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-link img:hover {
+            transform: scale(1.1);
+        }
+
+        header img {
+        display: block;
+        margin: 20px auto 0;
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>더 멋진 개발을 위하여</h1>
+        <nav>
+            <ul>
+                <li><a href="#portfolio">포트폴리오</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skill</a></li>
+                <li><a href="#resources">라이브러리</a></li>
+            </ul>
+        </nav>
+        <img src="C:\Users\kangt\Desktop\portfolio\images\logo.png">
+    </header>
+    
+    <section id="portfolio">
+        <h1>포트폴리오 & 개인 프로젝트</h1>
+        <nobr>
+        <ul>
+            <li>Auto click program which can use for 'Emotion button in KaKao Talk'</li>
+            <li>A game of Go at a glance(red&blue)</li>
+            <li>Web page for purchasing ticket</li>
+            <li>이미지분석 AI프레임워크 'MediaPipe를 활용한 졸음운전 방지 시스템(in development)</li>
+            <li>Artilleryman addon in minecraft be addition (in development)</li>
+        </ul>
+        </nobr>
+    </section>
+    
+    <section id="about">
+        <h1>About Me</h1>
+        <p>나의 이력</p>
+        <nobr>
+        <ul>
+            <li>카이스트 사이버영재교육원에서 프로그래밍을 처음 접했습니다(2016)</li>
+            <li>마포고등학교 STEAM동아리(2019)</li>
+            <li>한국외국어대 정보통신공학과 입학(2021)</li>
+            <li>5포병여단 정보작전과 무선장비운용병(2021.10~2023.4)</li>
+            <li>한국외대 코딩존 (컴퓨터 프로그래밍 실습) 조교(2024)</li>
+            <li>일본 킨키대학(近畿大学) 교환학생</li>
+        </ul>
+        </nobr>
+
+        <div class="image-link">
+            <a href="https://instagram.com" target="_blank">instagram
+            </a>
+            <a href="https://github.com/ROnnrwe" target="_blank">github
+            </a>
+            <a href="mailto:kangtaehoon3@gmail.com">mail
+            </a>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <h1>Skill</h1>
+        <p>사용하는 기술 스택 및 능력 설명</p>
+    </section>
+    
+    <section id="resources">
+        <h1>라이브러리</h1>
+        <p>나의 공부자료with notion</p>
+        <ul>
+            <li><a href="https://www.notion.so/c-programming-1b3d634f60df811aaddef464a0d27c41?pvs=4" target="_blank">C</a></li>
+            <li><a href="https://www.notion.so/c-programming-1b3d634f60df80e38b95fd54e76633e6?pvs=4" target="_blank">C++</a></li>
+            <li><a href="https://www.notion.so/AI-argorithm-1b3d634f60df813280b7e52a9f0b08b9?pvs=4" target="_blank">AI argorithm</a></li>
+            <li><a href="https://www.notion.so/Java-programming-1b3d634f60df81698baff8fbfc82ffd4?pvs=4" target="_blank">Java</a></li>
+            <li><a href="https://www.notion.so/Flask-1b3d634f60df81a294f6ce3ef53c61f9?pvs=4" target="_blank">Flask</a></li>
+            <li><a href="https://www.notion.so/Database-1b3d634f60df81ea86cbc324d4741468?pvs=4" target="_blank">Database</a></li>
+            <li><a href="https://www.notion.so/Data-Structure-1b3d634f60df8073b7a1cda21393d5d7?pvs=4" target="_blank">Comarch & OS</a></li>
+            <li><a href="https://www.notion.so/Computer-Architecture-OS-1b3d634f60df8092aed5ea6346fc16e9?pvs=4" target="_blank">Data structure</a></li>
+        </ul>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 태훈's Portfolio</p>
+    </footer>
+</body>
+</html>
