@@ -8,221 +8,314 @@
     <style>
         body {
             background-color: black;
-            color: rgb(255, 255, 255);
-            font-family: monospace;
+            color: white;
+            font-family: 'Courier New', monospace;
             text-align: center;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            font-size: 20px;
+            padding-top: 100px; /* 상단 여백 추가 */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/stars.gif') repeat;
+            opacity: 0.2;
+            z-index: -1;
         }
 
         header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
             padding: 20px 0;
-            animation: fadeIn 1.5s ease-in-out;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+            z-index: 1000;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 22px;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav ul li a:hover {
             color: cyan;
-        }
-
-        section {
-            padding: 80px 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.2s ease-in-out forwards;
-        }
-
-        h1 {
-            font-size: 48px;
-        }
-
-        p {
-            font-size: 22px;
-        }
-
-        footer {
-            padding: 20px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        /* 리스트 스타일 */
-        ul {
-            list-style-type: disc;
-            list-style-position: inside;
-            padding-left: 0;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        ul li {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        /* 링크 스타일 */
-        a {
-            color: rgb(178, 200, 136);
-            text-decoration: none;
-            margin-right: 15px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* 이미지 링크 */
-        .image-link img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .image-link img:hover {
             transform: scale(1.1);
         }
 
-        header img {
-        display: block;
-        margin: 20px auto 0;
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid cyan;
+            animation: typing 3s steps(30) infinite alternate, blink 0.7s step-end infinite;
+            max-width: 80%;
         }
 
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-        body {
-            font-size: 14px;
-            margin: 10px;
-        }
-
-        header h1 {
-            font-size: 30px;
-        }
-
-        nav ul li {
-            display: block;
-            margin: 10px 0;
+        @keyframes blink {
+            50% { border-color: transparent; }
         }
 
         section {
-            padding: 60px 20px;
+            padding: 120px 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-in-out;
+            max-width: 900px;
+            margin: auto;
         }
 
-        .image-link img {
-            width: 100%;
-            height: auto;
-            max-width: 200px;
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-    
+
+        footer {
+            padding: 30px;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: cyan;
+        }
+
+        .portfolio-box {
+            width: 300px; /* 고정된 크기 */
+            height: 300px; /* 고정된 크기 */
+            border: 2px solid cyan;
+            margin: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s;
+            box-sizing: border-box;
+        }
+
+        .portfolio-box:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-box h3, .portfolio-box p {
+            font-size: 24px; /* 글씨 크기 크게 설정 */
+            text-align: center;
+            margin: 0;
+            color: white;
+        }
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3개씩 배치 */
+            gap: 10px; /* 간격 좁힘 */
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .portfolio-box h3 {
+            font-size: 30px; /* 제목 글씨 크기 크게 */
+        }
+
+        .portfolio-box p {
+            font-size: 18px; /* 설명 글씨 크기 조금 크게 */
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            font-size: 20px;
+        }
+
+        .social-links a:hover {
+            color: cyan;
+        }
+
+        .details {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* 배경 불투명하게 설정 */
+            border: 2px solid #316c94; /* 민트색 테두리 */
+            color: white;
+            text-align: left;
+            font-size: 16px;
+            width: 100%; 
+            max-width: 900px; /* 고정된 최대 너비 */
+            min-height: 200px; /* 최소 높이 설정 */
+            margin: 20px auto; /* 가운데 정렬 */
+            opacity: 0.9; /* 불투명도 추가 */
+            box-sizing: border-box;
+            overflow-y: auto; /* 세로 스크롤 추가 */
+            word-wrap: break-word; /* 긴 단어 처리 */
+        }
+
+        .details.visible {
+            display: block;
+        }
+
+        /* Adjust list item spacing */
         ul {
-            padding-left: 0;
+            padding-left: 20px;
         }
 
-        footer p {
-            font-size: 12px;  /* 모바일에서 작은 폰트 크기 */
+        li {
+            list-style-position: inside;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
-    }
 
-       
     </style>
 </head>
 <body>
     <header>
-        <h1>더 멋진 개발을 위하여</h1>
+        <h1 class="typing">더 멋진 개발을 위하여</h1>
         <nav>
             <ul>
                 <li><a href="#portfolio">포트폴리오</a></li>
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#skills">Skill</a></li>
-                <li><a href="#resources">라이브러리</a></li>
             </ul>
         </nav>
-        <img src="images/logo.png" alt="Logo">
     </header>
-    
+
     <section id="portfolio">
         <h1>포트폴리오 & 개인 프로젝트</h1>
-        <ul>
-            <li>Auto click program which can use for 'Emotion button in KaKao Talk'</li>
-            <li>A game of Go at a glance(red&blue)</li>
-            <li>Web page for purchasing ticket</li>
-            <li>이미지분석 AI프레임워크 'MediaPipe를 활용한 졸음운전 방지 시스템(in development)</li>
-            <li>Artilleryman addon in minecraft be addition (in development)</li>
-        </ul>
+        <div class="portfolio-container">
+            <div class="portfolio-box" onclick="changeBoxContent(this, 'Auto click program', '이 프로젝트는 카카오톡 이모션 버튼을 자동으로 클릭하는 프로그램입니다.')">
+                <h3>Auto click program</h3>
+                <p>Emotion button in KaKao Talk</p>
+            </div>
+            <div class="portfolio-box" onclick="changeBoxContent(this, 'Game of Go', '바둑게임을 시각적으로 바둑에 대한 이해를 높이기 위해 개발했습니다.')">
+                <h3>Game of Go</h3>
+                <p>Red & Blue versions</p>
+            </div>
+            <div class="portfolio-box" onclick="changeBoxContent(this, 'Ticket purchasing System', '연극부 공연 티켓 구매를 위한 웹페이지입니다다.')">
+                <h3>Web page for purchasing ticket</h3>
+                <p>for drama club</p>
+            </div>
+            <div class="portfolio-box" onclick="changeBoxContent(this, 'vehicle IoT System', 'mediapipe프레임워크를 활용한 졸음운전 방지 시스템.(개발중)')">
+                <h3>A vehicle IoT System</h3>
+                <p>for preventing drowsy driving</p>
+            </div>
+            <div class="portfolio-box" onclick="changeBoxContent(this, 'Artillery addon', '게임 마인크래프트에 적용할 포병 애드온입니다.(개발중중)')">
+                <h3>Artillery addon</h3>
+                <p>on Minecraft</p>
+            </div>
+            <div class="portfolio-box" onclick="changeBoxContent(this, '...', '..')">
+                <h3>서비스 준비중..</h3>
+                <p>...</p>
+            </div>
+        </div>
+        <div id="project-details" class="details">
+            <h2 id="project-title"></h2>
+            <p id="project-description"></p>
+        </div>
     </section>
-    
+
     <section id="about">
         <h1>About Me</h1>
         <p>나의 이력</p>
         <ul>
-            <li>카이스트 사이버영재교육원에서 프로그래밍을 처음 접했습니다(2016)</li>
+            <li>카이스트 사이버영재교육원에서 프로그래밍을 처음 접했습니다.(2016)</li>
             <li>마포고등학교 STEAM동아리(2019)</li>
             <li>한국외국어대 정보통신공학과 입학(2021)</li>
-            <li>5포병여단 정보작전과 무선장비운용병(2021.10~2023.4)</li>
-            <li>한국외대 코딩존 (컴퓨터 프로그래밍 실습) 조교(2024)</li>
-            <li>일본 킨키대학(近畿大学) 교환학생</li>
+            <li>5포병여단 정보작전과 무선장비운용병 복무무(2021-2023)</li>
+            <li>한국외국어대학교 코딩존 조교(2024)</li>
+            <li>일본 近畿大学 교환학생(2025)</li>
         </ul>
-
-        <div class="image-link">
-            <a href="https://instagram.com" target="_blank">instagram
-            </a>
-            <a href="https://github.com/ROnnrwe" target="_blank">github
-            </a>
-            <a href="mailto:kangtaehoon3@gmail.com">mail
-            </a>
+        <div class="social-links">
+            <a href="https://www.instagram.com/002046.0" target="_blank">Instagram</a>
+            <a href="https://github.com/ROnnrwe" target="_blank">GitHub</a>
+            <a href="mailto:kangtaehoon3@gmail.com">mail</a>
+            <a href="https://boatneck-trampoline-d92.notion.site/1b3d634f60df80f48863ebbf879b8d9e?v=1bad634f60df80e1bd46000c6b378006" target="_blank">Notion</a>
         </div>
     </section>
-    
+
     <section id="skills">
-        <h1>Skill</h1>
-        <p>사용하는 기술 스택 및 능력 설명</p>
-    </section>
-    
-    <section id="resources">
-        <h1>라이브러리</h1>
-        <p>나의 공부자료with notion</p>
+        <h1>Skills</h1>
         <ul>
-            <li><a href="https://www.notion.so/c-programming-1b3d634f60df811aaddef464a0d27c41?pvs=4" target="_blank">C</a></li>
-            <li><a href="https://www.notion.so/c-programming-1b3d634f60df80e38b95fd54e76633e6?pvs=4" target="_blank">C++</a></li>
-            <li><a href="https://www.notion.so/AI-argorithm-1b3d634f60df813280b7e52a9f0b08b9?pvs=4" target="_blank">Math for AI argorithm</a></li>
-            <li><a href="https://www.notion.so/Java-programming-1b3d634f60df81698baff8fbfc82ffd4?pvs=4" target="_blank">Kotlin</a></li>
-            <li><a href="https://www.notion.so/Flask-1b3d634f60df81a294f6ce3ef53c61f9?pvs=4" target="_blank">Flask</a></li>
-            <li><a href="https://www.notion.so/Database-1b3d634f60df81ea86cbc324d4741468?pvs=4" target="_blank">Database</a></li>
-            <li><a href="https://www.notion.so/Data-Structure-1b3d634f60df8073b7a1cda21393d5d7?pvs=4" target="_blank">Comarch & OS</a></li>
-            <li><a href="https://www.notion.so/Computer-Architecture-OS-1b3d634f60df8092aed5ea6346fc16e9?pvs=4" target="_blank">Data structure</a></li>
+            <li>HTML5</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Git</li>
+            <li>Bash</li>
+            <li>Flask</li>
         </ul>
     </section>
-    
+
     <footer>
-        <p>&copy; 2025 태훈's Portfolio</p>
+        <p>&copy; 2025 All rights reserved</p>
     </footer>
+
+    <script>
+        let previousBox = null;
+
+        function changeBoxContent(box, title, description) {
+            // 기존 박스는 원래 상태로 복원
+            if (previousBox) {
+                previousBox.innerHTML = `
+                    <h3>${previousBox.getAttribute('data-title')}</h3>
+                    <p>${previousBox.getAttribute('data-description')}</p>
+                `;
+            }
+
+            // 현재 클릭된 박스 내용 업데이트
+            box.setAttribute('data-title', box.querySelector('h3').textContent);
+            box.setAttribute('data-description', box.querySelector('p').textContent);
+            box.innerHTML = `
+                <h3>${title}</h3>
+                <p>${description}</p>
+            `;
+
+            // 디테일 영역에 내용 표시
+            document.getElementById('project-title').innerText = title;
+            document.getElementById('project-description').innerText = description;
+            
+            // 디테일 영역 표시
+            document.getElementById('project-details').classList.add('visible');
+
+            // 이전 박스 저장
+            previousBox = box;
+        }
+
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                if (section.getBoundingClientRect().top < window.innerHeight) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
