@@ -42,6 +42,43 @@
             z-index: 1000;
         }
 
+        #skills {
+        text-align: center;
+        padding: 60px 20px;
+        }
+
+        .skills-container {
+         display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3개씩 배치 */
+         gap: 20px; /* 간격 설정 */
+         justify-items: center;
+        }
+
+        .skill-box {
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7); /* 배경 불투명하게 설정 */
+        padding: 20px;
+        border: 2px solid cyan;
+        border-radius: 10px;
+        transition: transform 0.3s;
+        }
+
+        .skill-box img {
+         width: 80px; /* 이미지 크기 설정 */
+        height: 80px;
+        margin-bottom: 10px;
+        }
+
+        .skill-box p {
+         color: white;
+        font-size: 18px;
+        margin: 0;
+        }
+
+        .skill-box:hover {
+        transform: scale(1.1);
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
@@ -263,15 +300,34 @@
 
     <section id="skills">
         <h1>Skills</h1>
-        <ul>
-            <li>HTML5</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Git</li>
-            <li>Bash</li>
-            <li>Flask</li>
-        </ul>
+        <div class="skills-container">
+            <div class="skill-box">
+                <img src="images/html5.png" alt="HTML5">
+                <p>HTML5</p>
+            </div>
+            <div class="skill-box">
+                <img src="images/css.png" alt="CSS">
+                <p>CSS</p>
+            </div>
+            <div class="skill-box">
+                <img src="images/js.png" alt="JavaScript">
+                <p>JavaScript</p>
+            </div>
+            <div class="skill-box">
+                <img src="images/git.png" alt="Git">
+                <p>Git</p>
+            </div>
+            <div class="skill-box">
+                <img src="images/bash.png" alt="Bash">
+                <p>Bash</p>
+            </div>
+            <div class="skill-box">
+                <img src="images/flask.jpg" alt="Flask">
+                <p>Flask</p>
+            </div>
+        </div>
     </section>
+    
 
     <footer>
         <p>&copy; 2025 All rights reserved</p>
@@ -319,3 +375,4 @@
     </script>
 </body>
 </html>
+
