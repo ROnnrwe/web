@@ -231,6 +231,55 @@
             font-size: 18px;
         }
 
+        @media (max-width: 768px) {
+        .portfolio-container {
+        grid-template-columns: repeat(2, 1fr); /* 2개씩 배치 */
+        }
+        .icons {
+                gap: 10px;
+            }
+
+         .icons img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+          .portfolio-container {
+          grid-template-columns: repeat(1, 1fr); /* 1개씩 배치 */
+             }
+        }
+        .portfolio-box h3 {
+        font-size: clamp(18px, 3vw, 30px);
+        }
+
+        .portfolio-box p {
+        font-size: clamp(14px, 2.5vw, 18px);
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .icons img {
+            width: 24px; /* 아이콘 크기 조정 */
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .icons img:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -290,11 +339,11 @@
             <li>한국외국어대학교 코딩존 조교(2024)</li>
             <li>일본 近畿大学 교환학생(2025)</li>
         </ul>
-        <div class="social-links">
-            <a href="https://www.instagram.com/002046.0" target="_blank">Instagram</a>
-            <a href="https://github.com/ROnnrwe" target="_blank">GitHub</a>
-            <a href="mailto:kangtaehoon3@gmail.com">mail</a>
-            <a href="https://boatneck-trampoline-d92.notion.site/1b3d634f60df80f48863ebbf879b8d9e?v=1bad634f60df80e1bd46000c6b378006" target="_blank">Notion</a>
+        <div class="icons">
+            <a href="https://www.instagram.com/002046.0" target="_blank"><img src="images/insta.png" alt="instagram"></a>
+            <a href="https://github.com/ROnnrwe" target="_blank"><img src="images/github.png" alt="git hub"></a>
+            <a href="mailto:kangtaehoon3@gmail.com"><img src="images/mail.png" alt="Send mail"></a>
+            <a href="https://boatneck-trampoline-d92.notion.site/1b3d634f60df80f48863ebbf879b8d9e?v=1bad634f60df80e1bd46000c6b378006" target="_blank"><img src="images/notion.png" alt="notion"></a>
         </div>
     </section>
 
@@ -375,4 +424,3 @@
     </script>
 </body>
 </html>
-
